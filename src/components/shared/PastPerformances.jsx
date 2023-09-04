@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import PastPerformanceItem from "./PastPerformanceItem";
+import CompHeader from "./CompHeader";
 
 function PastPerformances({ staticPlayerData, player }) {
     const [itemToShow, setItemToShow] = useState(0);
@@ -17,7 +17,8 @@ function PastPerformances({ staticPlayerData, player }) {
     };
 
     return (
-        <div className="overflow-x-hidden w-72 h-72 relative">
+        <div className="overflow-x-hidden w-80 h-80 p-2 relative border rounded">
+            <CompHeader>Matches</CompHeader>
             {player.history.toReversed().map((match, i) => (
                 <PastPerformanceItem
                     key={i}
@@ -29,28 +30,32 @@ function PastPerformances({ staticPlayerData, player }) {
             ))}
             <div>
                 <div className="absolute bottom-2 flex justify-center w-full gap-4">
-                    <BsArrowLeftCircle
-                        onClick={() => {
-                            if (!itemToShow) {
-                                setItemToShow(player.history.length - 1);
-                            } else {
-                                setItemToShow((prev) => prev - 1);
-                            }
-                        }}
-                        className="cursor-pointer hover:fill-blue-600"
-                        size={"1.3rem"}
-                    />
-                    <BsArrowRightCircle
-                        onClick={() => {
-                            if (player.history.length === itemToShow + 1) {
-                                setItemToShow(0);
-                            } else {
-                                setItemToShow((prev) => prev + 1);
-                            }
-                        }}
-                        className="cursor-pointer hover:fill-blue-600"
-                        size={"1.3rem"}
-                    />
+                    <button>
+                        <BsArrowLeftCircle
+                            onClick={() => {
+                                if (!itemToShow) {
+                                    setItemToShow(player.history.length - 1);
+                                } else {
+                                    setItemToShow((prev) => prev - 1);
+                                }
+                            }}
+                            className="cursor-pointer hover:fill-blue-600"
+                            size={"1.3rem"}
+                        />
+                    </button>
+                    <button>
+                        <BsArrowRightCircle
+                            onClick={() => {
+                                if (player.history.length === itemToShow + 1) {
+                                    setItemToShow(0);
+                                } else {
+                                    setItemToShow((prev) => prev + 1);
+                                }
+                            }}
+                            className="cursor-pointer hover:fill-blue-600"
+                            size={"1.3rem"}
+                        />
+                    </button>
                 </div>
             </div>
         </div>

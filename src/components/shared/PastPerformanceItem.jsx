@@ -59,7 +59,7 @@ function PastPerformanceItem({ match, staticPlayerData, i, itemToShow }) {
                     {isHome ? opponent.short_name : playerTeam.short_name}
                 </span>
             </div>
-            <div className="flex gap-4 mb-4 whitespace-nowrap">
+            <div className="flex gap-4 whitespace-nowrap">
                 <div>
                     <div className="flex items-center gap-2">
                         <FiClock />
