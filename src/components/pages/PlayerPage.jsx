@@ -6,6 +6,7 @@ import PlayerCard from "../shared/PlayerCard";
 import { AiOutlineClose } from "react-icons/ai";
 import { FcCancel } from "react-icons/fc";
 import PastPerformances from "../shared/PastPerformances";
+import NextMatch from "../shared/NextMatch";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const backgroundRef = useRef();
@@ -38,7 +39,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
         >
             <div className="fixed top-20 right-20 left-20 bottom-20 bg-black/90 text-white p-8 select-none rounded-lg grid grid-cols-3 place-items-center">
                 {staticPlayerData.news && (
-                    <div className="absolute top-8 bg-white text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold">
+                    <div className="absolute top-8 bg-white text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold <-50">
                         <FcCancel size={"1.5rem"} />
                         {staticPlayerData.news}
                     </div>
@@ -47,6 +48,10 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                 <PastPerformances
                     staticPlayerData={staticPlayerData}
                     player={player}
+                />
+                <NextMatch
+                    staticPlayerData={staticPlayerData}
+                    match={player.fixtures[0]}
                 />
 
                 <button
