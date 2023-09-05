@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import useGetTeams from "../../hooks/useGetTeams";
+import CompHeader from "./CompHeader";
 
 function NextMatch({ match, staticPlayerData }) {
     const { opponent, playerTeam } = useGetTeams(
@@ -7,7 +8,6 @@ function NextMatch({ match, staticPlayerData }) {
         staticPlayerData
     );
     const isHome = match.is_home;
-    console.log(staticPlayerData);
 
     NextMatch.propTypes = {
         match: PropTypes.object,
@@ -16,7 +16,8 @@ function NextMatch({ match, staticPlayerData }) {
 
     return (
         <div className="flex flex-col items-center">
-            <h2 className="font-extrabold mb-4">{match.event_name}</h2>
+            <CompHeader className="self-start">Next Match</CompHeader>
+            <h3 className="font-extrabold mb-4">{match.event_name}</h3>
             <div className="flex items-center gap-4 mb-2">
                 <img
                     className="h-16 w-16"

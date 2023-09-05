@@ -7,6 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FcCancel } from "react-icons/fc";
 import PastPerformances from "../shared/PastPerformances";
 import NextMatch from "../shared/NextMatch";
+import PlayerEfficiency from "../shared/PlayerEfficiency";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const backgroundRef = useRef();
@@ -39,7 +40,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
         >
             <div className="fixed top-20 right-20 left-20 bottom-20 bg-black/90 text-white p-8 select-none rounded-lg grid grid-cols-3 place-items-center">
                 {staticPlayerData.news && (
-                    <div className="absolute top-8 bg-white text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold <-50">
+                    <div className="absolute top-8 bg-white text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-50">
                         <FcCancel size={"1.5rem"} />
                         {staticPlayerData.news}
                     </div>
@@ -53,9 +54,13 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                     staticPlayerData={staticPlayerData}
                     match={player.fixtures[0]}
                 />
+                <PlayerEfficiency staticPlayerData={staticPlayerData} />
 
                 <button
-                    onClick={() => setIsModalOpen(false)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsModalOpen(false);
+                    }}
                     className="absolute top-0 right-0 p-1 cursor-pointer"
                 >
                     <AiOutlineClose className="w-6 h-6" />
