@@ -11,6 +11,12 @@ function PlayerListItem({ player }) {
 
     return (
         <>
+            {isModalOpen && (
+                <PlayerPage
+                    setIsModalOpen={setIsModalOpen}
+                    staticPlayerData={player}
+                />
+            )}
             <li
                 onClick={() => setIsModalOpen(true)}
                 className="flex items-center gap-4 cursor-pointer py-1.5 px-2 hover:bg-gray-200 font-semibold border rounded"
@@ -20,12 +26,6 @@ function PlayerListItem({ player }) {
                     src={`https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_${player.team_code}-66.webp`}
                 />
                 {player.second_name}
-                {isModalOpen && (
-                    <PlayerPage
-                        setIsModalOpen={setIsModalOpen}
-                        staticPlayerData={player}
-                    />
-                )}
             </li>
         </>
     );
