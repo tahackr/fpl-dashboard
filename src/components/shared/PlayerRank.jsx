@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetPercentile from "../../hooks/useGetPercentile";
 import PropTypes from "prop-types";
+import CompHeader from "./CompHeader";
 
 function PlayerRank({ staticPlayerData }) {
     const {
@@ -24,7 +25,7 @@ function PlayerRank({ staticPlayerData }) {
         labels: ["ICT", "Form", "Points per game", "Selected", "Cost"],
         datasets: [
             {
-                label: "Score",
+                label: "Higher than % ",
                 data: [
                     100 - useGetPercentile(ict_index_rank, elements.length),
                     100 - useGetPercentile(form_rank, elements.length),
@@ -44,25 +45,46 @@ function PlayerRank({ staticPlayerData }) {
     };
 
     return (
-        <div>
-            <Radar
-                data={data}
-                className="bg-neutral-100 p-0.5 rounded-md"
-                options={{
-                    elements: {
-                        point: {
-                            pointRadius: 4,
-                            hoverRadius: 5,
+        <div className="flex flex-col items-center">
+            <CompHeader className="self-start">Player Rank</CompHeader>
+            <div className="max-w-max mt-auto">
+                <Radar
+                    data={data}
+                    className="bg-neutral-700 p-0.5 rounded-2xl"
+                    options={{
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: "#fff",
+                                },
+                                display: true,
+                            },
                         },
-                    },
-                    scales: {
-                        r: {
-                            suggestedMin: 0,
-                            suggestedMax: 100,
+                        elements: {
+                            point: {
+                                pointRadius: 4,
+                                hoverRadius: 5,
+                            },
                         },
-                    },
-                }}
-            />
+                        scales: {
+                            r: {
+                                suggestedMin: 0,
+                                suggestedMax: 100,
+                                backgroundColor: "#000",
+                                grid: { color: "#bbb" },
+                                pointLabels: { color: "#fff" },
+                                angleLines: {
+                                    color: "#bbb",
+                                },
+                                ticks: {
+                                    color: "#000",
+                                    backdropColor: "#eee",
+                                },
+                            },
+                        },
+                    }}
+                />
+            </div>
         </div>
     );
 }

@@ -8,7 +8,14 @@ function PastPerformances({ staticPlayerData, player }) {
     const [itemToShow, setItemToShow] = useState(0);
 
     if (!player.history.length) {
-        return <p className="text-white">Did not play a match this season</p>;
+        return (
+            <div>
+                <CompHeader>Matches</CompHeader>
+                <p className="p-1 text-white">
+                    Did not play a match this season
+                </p>
+            </div>
+        );
     }
 
     PastPerformances.propTypes = {
@@ -17,7 +24,7 @@ function PastPerformances({ staticPlayerData, player }) {
     };
 
     return (
-        <div className="overflow-x-hidden relative h-80 w-80 ">
+        <div className="overflow-x-hidden relative min-h-[22.6rem] min-w-[19rem] ">
             <CompHeader>Matches</CompHeader>
             {player.history.toReversed().map((match, i) => (
                 <PastPerformanceItem
@@ -29,7 +36,7 @@ function PastPerformances({ staticPlayerData, player }) {
                 />
             ))}
             <div>
-                <div className="absolute bottom-2 flex justify-center w-full gap-4">
+                <div className="absolute bottom-4 flex justify-center w-full gap-4">
                     <button>
                         <BsArrowLeftCircle
                             onClick={() => {

@@ -22,41 +22,43 @@ function NextMatch({ match, staticPlayerData }) {
     };
 
     return (
-        <div className="flex flex-col items-center self-center">
+        <div className="flex flex-col items-center">
             <CompHeader className="self-start">Next Match</CompHeader>
-            <h3 className="font-extrabold mb-4">{match.event_name}</h3>
-            <a
-                className="flex items-center gap-4 mb-2 duration-300 hover:scale-110 "
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://www.premierleague.com/match/${nextMatch.pulse_id}`}
-            >
-                <img
-                    className="h-16 w-16"
-                    src={`https://resources.premierleague.com/premierleague/badges/70/t${
-                        isHome ? playerTeam.code : opponent.code
-                    }@x2.png`}
-                />
-                <span className="font-black">VS</span>
-                <img
-                    className="h-16 w-16"
-                    src={`https://resources.premierleague.com/premierleague/badges/70/t${
-                        isHome ? opponent.code : playerTeam.code
-                    }@x2.png`}
-                />
-            </a>
-            <p className="font-medium">
-                {Intl.DateTimeFormat(navigator.language, {
-                    hour: "numeric",
-                    minute: "numeric",
-                }).format(new Date(match.kickoff_time))}
-            </p>
-            <p className="font-medium mb-2">
-                {Intl.DateTimeFormat(navigator.language, {
-                    dateStyle: "full",
-                }).format(new Date(match.kickoff_time))}
-            </p>
-            <p>Fixture difficulty : {match.difficulty}</p>
+            <div className="grow w-full flex flex-col items-center justify-center bg-neutral-700 rounded-2xl p-8">
+                <h3 className="font-extrabold mb-4">{match.event_name}</h3>
+                <a
+                    className="flex items-center gap-4 mb-2 duration-300 hover:scale-110 "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://www.premierleague.com/match/${nextMatch.pulse_id}`}
+                >
+                    <img
+                        className="h-16 w-16"
+                        src={`https://resources.premierleague.com/premierleague/badges/70/t${
+                            isHome ? playerTeam.code : opponent.code
+                        }@x2.png`}
+                    />
+                    <span className="font-black">VS</span>
+                    <img
+                        className="h-16 w-16"
+                        src={`https://resources.premierleague.com/premierleague/badges/70/t${
+                            isHome ? opponent.code : playerTeam.code
+                        }@x2.png`}
+                    />
+                </a>
+                <p className="font-medium">
+                    {Intl.DateTimeFormat(navigator.language, {
+                        hour: "numeric",
+                        minute: "numeric",
+                    }).format(new Date(match.kickoff_time))}
+                </p>
+                <p className="font-medium mb-2">
+                    {Intl.DateTimeFormat(navigator.language, {
+                        dateStyle: "full",
+                    }).format(new Date(match.kickoff_time))}
+                </p>
+                <p>Fixture difficulty : {match.difficulty}</p>
+            </div>
         </div>
     );
 }

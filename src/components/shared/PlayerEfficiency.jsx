@@ -52,11 +52,34 @@ function PlayerEfficiency({ staticPlayerData }) {
         staticPlayerData: PropTypes.object,
     };
     return (
-        <div className="col-span-2">
-            <CompHeader>Efficiency</CompHeader>
-            <div className="relative max-w-[750px] m-auto">
-                <Bar data={data} />
-            </div>
+        <div className="col-span-2 flex flex-col items-center">
+            <CompHeader className="self-start">Efficiency</CompHeader>
+
+            <Bar
+                className="bg-neutral-700 rounded-2xl p-8 max-h-[317.5px] max-w-[635px]"
+                data={data}
+                options={{
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: "#fff",
+                            },
+                        },
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                color: "#fff",
+                            },
+                        },
+                        x: {
+                            ticks: {
+                                color: "#fff",
+                            },
+                        },
+                    },
+                }}
+            />
         </div>
     );
 }
