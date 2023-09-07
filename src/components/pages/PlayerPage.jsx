@@ -8,6 +8,8 @@ import { FcCancel } from "react-icons/fc";
 import PastPerformances from "../shared/PastPerformances";
 import NextMatch from "../shared/NextMatch";
 import PlayerEfficiency from "../shared/PlayerEfficiency";
+import PlayerSeasonStats from "../shared/PlayerSeasonStats";
+import PlayerRank from "../shared/PlayerRank";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const backgroundRef = useRef();
@@ -38,9 +40,9 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             onClick={handleClose}
             className="bg-zinc-500 fixed inset-0 "
         >
-            <div className="fixed top-20 right-20 left-20 bottom-20 bg-black/90 text-white p-8 select-none rounded-lg grid grid-cols-3 place-items-center">
+            <div className="gap-4 fixed top-20 right-20 left-20 bottom-20 bg-neutral-900 text-white p-8 select-none rounded-lg grid grid-cols-3 place-items-stretch">
                 {staticPlayerData.news && (
-                    <div className="absolute top-8 bg-white text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-50">
+                    <div className="absolute top-8 bg-white/95 text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-40">
                         <FcCancel size={"1.5rem"} />
                         {staticPlayerData.news}
                     </div>
@@ -50,18 +52,20 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                     staticPlayerData={staticPlayerData}
                     player={player}
                 />
+                <PlayerRank staticPlayerData={staticPlayerData} />
                 <NextMatch
                     staticPlayerData={staticPlayerData}
                     match={player.fixtures[0]}
                 />
                 <PlayerEfficiency staticPlayerData={staticPlayerData} />
+                <PlayerSeasonStats staticPlayerData={staticPlayerData} />
 
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
                         setIsModalOpen(false);
                     }}
-                    className="absolute top-0 right-0 p-1 cursor-pointer"
+                    className="absolute top-0 right-0 p-1 cursor-pointer z-50"
                 >
                     <AiOutlineClose className="w-6 h-6" />
                 </button>
