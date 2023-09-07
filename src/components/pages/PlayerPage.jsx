@@ -12,6 +12,7 @@ import PlayerSeasonStats from "../shared/PlayerSeasonStats";
 import PlayerRank from "../shared/PlayerRank";
 import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetBackgroundColor from "../../hooks/useGetBackgroundColor";
+import PlayerPageSkeleton from "../PlayerPageSkeleton";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const {
@@ -30,14 +31,6 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     );
     const backgroundColor = useGetBackgroundColor(playerTeam.name);
 
-    if (isFetching) {
-        return <div>Loading</div>;
-    }
-
-    if (error) {
-        return <div>Error</div>;
-    }
-
     const handleClose = (e) => {
         if (e.target === backgroundRef.current) setIsModalOpen(false);
     };
@@ -46,6 +39,27 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
         if (e.target.closest(".news-close") === newsCloseButtonRef.current)
             setShowNews(false);
     };
+
+    if (isFetching) {
+        return createPortal(
+            <div
+                ref={backgroundRef}
+                onClick={handleClose}
+                className="bg-zinc-500 fixed inset-0"
+            >
+                <div
+                    className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 ${backgroundColor}`}
+                >
+                    <PlayerPageSkeleton />
+                </div>
+            </div>,
+            document.body
+        );
+    }
+
+    if (error) {
+        return <div>Error</div>;
+    }
 
     PlayerPage.propTypes = {
         staticPlayerData: PropTypes.object,
@@ -59,7 +73,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             className="bg-zinc-500 fixed inset-0 "
         >
             <div
-                className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 ${backgroundColor}`}
+                className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 ${backgroundColor}`}
             >
                 {staticPlayerData.news && showNews && (
                     <div className="absolute top-8 bg-white/95 text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-40">

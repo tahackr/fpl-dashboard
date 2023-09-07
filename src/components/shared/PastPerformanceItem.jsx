@@ -26,7 +26,7 @@ function PastPerformanceItem({ match, staticPlayerData, i, itemToShow }) {
 
     return (
         <div
-            className="absolute flex flex-col items-center duration-500 bg-neutral-700 rounded-2xl px-4 pb-14 pt-8 top-13 right-0 left-0 bottom-0"
+            className="absolute flex flex-col items-center duration-500 bg-neutral-500 rounded-2xl px-4 pb-14 pt-8 top-13 right-0 left-0 bottom-0"
             style={{
                 translate: (itemToShow - i) * -120 + "%",
             }}

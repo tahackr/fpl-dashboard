@@ -3,10 +3,19 @@ import { useQuery } from "react-query";
 
 function useFetchFixtures() {
     return useQuery("fixtures", async () => {
-        const data = await axios.get("/api/fixtures/", {
-            cache: "force-cache",
-        });
-        return data;
+        try {
+            const data = await axios.get("/api/fixtures/", {
+                cache: "force-cache",
+                signal: AbortSignal.timeout(5000),
+            });
+            return data;
+        } catch (err) {
+            if (err.code === "ERR_CANCELED") {
+                throw new Error("Request took too long");
+            } else {
+                throw err;
+            }
+        }
     });
 }
 
