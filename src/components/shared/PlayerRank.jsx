@@ -50,7 +50,7 @@ function PlayerRank({ staticPlayerData }) {
             <div className="max-w-max mt-auto">
                 <Radar
                     data={data}
-                    className="bg-neutral-700 p-0.5 rounded-2xl"
+                    className="bg-neutral-500 p-0.5 rounded-2xl"
                     options={{
                         plugins: {
                             legend: {

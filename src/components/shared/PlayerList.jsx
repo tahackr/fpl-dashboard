@@ -4,6 +4,7 @@ import PlayerListItem from "./PlayerListItem";
 import { BiFirstPage, BiLastPage } from "react-icons/bi";
 import usePagination from "../../hooks/usePagination";
 import { itemCount } from "../../utils/paginationItemCount";
+import PlayerListSkeleton from "./PlayerListSkeleton";
 
 function PlayerList() {
     const { data, isFetching, error } = useContext(StaticDataContext);
@@ -15,15 +16,19 @@ function PlayerList() {
     );
 
     if (isFetching) {
-        return <div>Loading</div>;
+        return <PlayerListSkeleton />;
     }
 
     if (error) {
-        return <div>Error</div>;
+        return <h2 className="text-xl font-bold">{error.message}</h2>;
     }
 
+    // sort by cost b.now_cost - a.now_cost
+    // sort alphabetically ??? second_name ??? first_name ??? web_name ???
+    // create a state for sort types
+
     return (
-        <>
+        <div>
             <ul>
                 {data?.data.elements
                     .toSorted(
@@ -65,7 +70,7 @@ function PlayerList() {
                     />
                 </button>
             </div>
-        </>
+        </div>
     );
 }
 

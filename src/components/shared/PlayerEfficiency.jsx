@@ -56,7 +56,7 @@ function PlayerEfficiency({ staticPlayerData }) {
             <CompHeader className="self-start">Efficiency</CompHeader>
 
             <Bar
-                className="bg-neutral-700 rounded-2xl p-8 max-h-[317.5px] max-w-[635px]"
+                className="bg-neutral-500 rounded-2xl p-8 max-h-[317.5px] max-w-[635px]"
                 data={data}
                 options={{
                     plugins: {
