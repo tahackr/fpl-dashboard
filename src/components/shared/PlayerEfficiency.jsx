@@ -52,34 +52,35 @@ function PlayerEfficiency({ staticPlayerData }) {
         staticPlayerData: PropTypes.object,
     };
     return (
-        <div className="col-span-2 flex flex-col items-center">
+        <div className="col-span-2 flex flex-col items-center max-[1500px]:col-span-full">
             <CompHeader className="self-start">Efficiency</CompHeader>
-
-            <Bar
-                className="bg-neutral-500 rounded-2xl p-8 max-h-[317.5px] max-w-[635px]"
-                data={data}
-                options={{
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: "#fff",
+            <div className="bg-white/50 rounded-2xl w-full h-full flex justify-center">
+                <Bar
+                    className="p-2 max-h-[317.5px] max-w-[635px]"
+                    data={data}
+                    options={{
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: "#fff",
+                                },
                             },
                         },
-                    },
-                    scales: {
-                        y: {
-                            ticks: {
-                                color: "#fff",
+                        scales: {
+                            y: {
+                                ticks: {
+                                    color: "#fff",
+                                },
+                            },
+                            x: {
+                                ticks: {
+                                    color: "#fff",
+                                },
                             },
                         },
-                        x: {
-                            ticks: {
-                                color: "#fff",
-                            },
-                        },
-                    },
-                }}
-            />
+                    }}
+                />
+            </div>
         </div>
     );
 }

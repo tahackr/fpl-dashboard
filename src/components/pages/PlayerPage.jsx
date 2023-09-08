@@ -13,6 +13,7 @@ import PlayerRank from "../shared/PlayerRank";
 import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetBackgroundColor from "../../hooks/useGetBackgroundColor";
 import PlayerPageSkeleton from "../PlayerPageSkeleton";
+import ModalCloseButton from "../shared/ModalCloseButton";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const {
@@ -24,7 +25,9 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const backgroundRef = useRef();
     const newsCloseButtonRef = useRef();
 
-    const { data, isFetching, error } = useFetchPlayerData(staticPlayerData.id);
+    const { data, isFetching, error, refetch } = useFetchPlayerData(
+        staticPlayerData.id
+    );
     const player = data && data.data;
     const [playerTeam] = teams.filter(
         (team) => team.code === staticPlayerData.team_code
@@ -45,12 +48,16 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             <div
                 ref={backgroundRef}
                 onClick={handleClose}
-                className="bg-zinc-500 fixed inset-0"
+                className="bg-zinc-800/80 fixed inset-0"
             >
                 <div
                     className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 ${backgroundColor}`}
                 >
                     <PlayerPageSkeleton />
+                    <ModalCloseButton
+                        setIsModalOpen={setIsModalOpen}
+                        backgroundColor={backgroundColor}
+                    />
                 </div>
             </div>,
             document.body
@@ -58,7 +65,33 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     }
 
     if (error) {
-        return <div>Error</div>;
+        return (
+            <div
+                ref={backgroundRef}
+                onClick={handleClose}
+                className="bg-zinc-800/80 fixed inset-0 "
+            >
+                <div
+                    className={`shadow-xl fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg flex flex-col gap-4 items-center ${backgroundColor}`}
+                >
+                    <div className="font-bold text-xl">Oops!</div>
+                    <div className="font-bold text-xl">
+                        Something Went Wrong
+                    </div>
+                    <div className="font-md text-md">{error.message}</div>
+                    <button
+                        className={`w-fit p-2 font-medium duration-400 rounded hover:shadow-xl hover:bg-black hover:text-white bg-white text-black`}
+                        onClick={refetch}
+                    >
+                        Try Again
+                    </button>
+                    <ModalCloseButton
+                        setIsModalOpen={setIsModalOpen}
+                        backgroundColor={backgroundColor}
+                    />
+                </div>
+            </div>
+        );
     }
 
     PlayerPage.propTypes = {
@@ -70,10 +103,10 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
         <div
             ref={backgroundRef}
             onClick={handleClose}
-            className="bg-zinc-500 fixed inset-0 "
+            className="bg-zinc-800/80 fixed inset-0 "
         >
             <div
-                className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 ${backgroundColor}`}
+                className={`shadow-xl gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[700px]:p-2 ${backgroundColor}`}
             >
                 {staticPlayerData.news && showNews && (
                     <div className="absolute top-8 bg-white/95 text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-40">
@@ -102,19 +135,10 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                 <PlayerSeasonStats staticPlayerData={staticPlayerData} />
                 <PlayerEfficiency staticPlayerData={staticPlayerData} />
 
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setIsModalOpen(false);
-                    }}
-                    className={`absolute top-0 right-0 p-1 cursor-pointer z-50 ${
-                        backgroundColor.split(" ").includes("to-white")
-                            ? "text-black"
-                            : ""
-                    }`}
-                >
-                    <AiOutlineClose className="w-6 h-6" />
-                </button>
+                <ModalCloseButton
+                    setIsModalOpen={setIsModalOpen}
+                    backgroundColor={backgroundColor}
+                />
             </div>
         </div>,
         document.body

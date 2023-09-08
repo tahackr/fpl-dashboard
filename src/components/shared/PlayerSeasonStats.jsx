@@ -26,6 +26,10 @@ function PlayerSeasonStats({ staticPlayerData }) {
         total_points,
     } = staticPlayerData;
 
+    const cost = String(now_cost).split("");
+    cost.splice(-1, 0, ".");
+    cost.join("");
+
     PlayerSeasonStats.propTypes = {
         staticPlayerData: PropTypes.object,
     };
@@ -33,7 +37,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
     return (
         <div className="col-start-[-1] col-end-[-2] row-start-1 row-end-3 row-span-2 flex flex-col">
             <CompHeader>Season Stats</CompHeader>
-            <div className="mt-3 grow grid grid-cols-2 gap-2 !text-black bg-neutral-500 rounded-2xl p-6">
+            <div className="grow grid grid-cols-2 gap-2 !text-black bg-white/50 rounded-2xl p-6">
                 <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <PiSoccerBall className="min-w-[1rem]" />
@@ -95,7 +99,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         <h3 className="font-semibold">COST</h3>
                     </div>
                     <span className="font-extrabold self-end text-lg">
-                        {now_cost}
+                        {cost}
                     </span>
                 </div>
                 <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
