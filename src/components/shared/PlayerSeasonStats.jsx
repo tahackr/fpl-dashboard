@@ -35,7 +35,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
     };
 
     return (
-        <div className="col-start-[-1] col-end-[-2] row-start-1 row-end-3 row-span-2 flex flex-col">
+        <div className="col-start-[-1] col-end-[-2] row-start-1 row-end-3 row-span-2 flex flex-col max-[650px]:row-start-auto max-[650px]:row-end-auto">
             <CompHeader>Season Stats</CompHeader>
             <div className="grow grid grid-cols-2 gap-2 !text-black bg-white/50 rounded-2xl p-6">
                 <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">

@@ -8,6 +8,11 @@ function useGetTeams(id, staticPlayerData) {
         },
     } = useContext(StaticDataContext);
 
+    if (!staticPlayerData) {
+        const [team] = teams.filter((team) => team.id === id);
+        return team;
+    }
+
     const [opponent] = teams.filter((team) => team.id === id);
     const [playerTeam] = teams.filter(
         (team) => team.code === staticPlayerData.team_code

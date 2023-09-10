@@ -4,37 +4,56 @@ import { BiFirstPage, BiLastPage } from "react-icons/bi";
 function usePagination(page, length, setPage) {
     const totalPages = Math.ceil(length / itemCount);
 
+    const currentPage = (
+        <span className="font-black flex items-center justify-center w-8 h-8 rounded-full">
+            {page}
+        </span>
+    );
+
+    const getNextPage = (value = 1) => (
+        <span
+            onClick={() => setPage((prev) => prev + value)}
+            className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
+        >
+            {page + value}
+        </span>
+    );
+
+    const getPrevPage = (value = 1) => (
+        <span
+            onClick={() => setPage((prev) => prev - value)}
+            className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
+        >
+            {page - value}
+        </span>
+    );
+
     const getPageNumbers = () => {
+        if (totalPages === 1) {
+            return currentPage;
+        }
+        if (totalPages === 2) {
+            return page < totalPages ? (
+                <>
+                    {currentPage}
+                    {getNextPage()}
+                </>
+            ) : (
+                <>
+                    {getPrevPage()}
+                    {currentPage}
+                </>
+            );
+        }
+
         if (page >= 3 && page <= totalPages - 2) {
             return (
                 <>
-                    <span
-                        onClick={() => setPage((prev) => prev - 2)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page - 2}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev - 1)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page - 1}
-                    </span>
-                    <span className="font-black scale-125 flex items-center justify-center w-8 h-8 rounded-full">
-                        {page}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev + 1)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page + 1}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev + 2)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page + 2}
-                    </span>
+                    {getPrevPage(2)}
+                    {getPrevPage()}
+                    {currentPage}
+                    {getNextPage()}
+                    {getNextPage(2)}
                 </>
             );
         }
@@ -42,21 +61,9 @@ function usePagination(page, length, setPage) {
         if (page === 2 || page === totalPages - 1) {
             return (
                 <>
-                    <span
-                        onClick={() => setPage((prev) => prev - 1)}
-                        className="ml-10 font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page - 1}
-                    </span>
-                    <span className="font-black scale-125 flex items-center justify-center w-8 h-8 rounded-full">
-                        {page}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev + 1)}
-                        className="mr-10 font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page + 1}
-                    </span>
+                    {getPrevPage()}
+                    {currentPage}
+                    {getNextPage()}
                 </>
             );
         }
@@ -64,21 +71,9 @@ function usePagination(page, length, setPage) {
         if (page === 1) {
             return (
                 <>
-                    <span className="ml-10 font-black scale-125 flex items-center justify-center w-8 h-8 rounded-full">
-                        {page}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev + 1)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page + 1}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev + 2)}
-                        className="mr-10 font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page + 2}
-                    </span>
+                    {currentPage}
+                    {getNextPage()}
+                    {getNextPage(2)}
                 </>
             );
         }
@@ -86,21 +81,9 @@ function usePagination(page, length, setPage) {
         if (page === totalPages) {
             return (
                 <>
-                    <span
-                        onClick={() => setPage((prev) => prev - 2)}
-                        className="ml-10 font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page - 2}
-                    </span>
-                    <span
-                        onClick={() => setPage((prev) => prev - 1)}
-                        className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
-                    >
-                        {page - 1}
-                    </span>
-                    <span className="mr-10 font-black scale-125 flex items-center justify-center w-8 h-8 rounded-full">
-                        {page}
-                    </span>
+                    {getPrevPage(2)}
+                    {getPrevPage()}
+                    {currentPage}
                 </>
             );
         }

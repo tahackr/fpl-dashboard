@@ -16,7 +16,7 @@ function PlayerEfficiency({ staticPlayerData }) {
     } = staticPlayerData;
 
     const data = {
-        labels: ["Goals", "Assists", "Goal Involvements"],
+        labels: ["Goals", "Assists", "Involvements"],
         datasets: [
             {
                 type: "bar",
@@ -61,6 +61,7 @@ function PlayerEfficiency({ staticPlayerData }) {
                     options={{
                         plugins: {
                             legend: {
+                                display: window.innerWidth >= 450,
                                 labels: {
                                     color: "#fff",
                                 },

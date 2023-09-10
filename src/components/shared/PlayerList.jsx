@@ -4,11 +4,21 @@ import usePagination from "../../hooks/usePagination";
 import { itemCount } from "../../utils/paginationItemCount";
 import PlayerListSkeleton from "./PlayerListSkeleton";
 import useGetFilteredPlayers from "../../hooks/useGetFilteredPlayers";
+import SortLabel from "./sortLabel";
+import ViewLabel from "./ViewLabel";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { Table, TableBody } from "@mui/material";
+import PlayerListTableHead from "./PlayerListTableHead";
 
 function PlayerList() {
-    const [filteredPlayers, setFilteredPlayers] = useState("all");
-    const { data, isFetching, error } = useGetFilteredPlayers(filteredPlayers);
+    const [filterType, setFilterType] = useState("all");
     const [sortType, setSortType] = useState("total_points");
+    const [query, setQuery] = useState("");
+    const { data, isFetching, error } = useGetFilteredPlayers(
+        filterType,
+        sortType,
+        query
+    );
     const [page, setPage] = useState(1);
     const pagination = usePagination(page, data?.length, setPage);
 
@@ -20,8 +30,8 @@ function PlayerList() {
         return <h2 className="text-xl font-bold">{error.message}</h2>;
     }
 
-    const handlePlayerSelect = (e) => {
-        setFilteredPlayers(e.target.value);
+    const handleFilterTypeSelect = (e) => {
+        setFilterType(e.target.value);
         setPage(1);
     };
 
@@ -30,84 +40,51 @@ function PlayerList() {
         setPage(1);
     };
 
+    const handleSearch = (e) => {
+        if (!e.target.value.match(/^[A-Za-z\s]*$/)) return;
+        setQuery(e.target.value);
+        setPage(1);
+    };
+
     const renderedPlayers = data
-        ?.toSorted((a, b) => b[sortType] - a[sortType])
         .slice((page - 1) * itemCount, page * itemCount)
-        .map((player, i) => <PlayerListItem player={player} key={i} />);
+        .map((player, i) => (
+            <PlayerListItem player={player} sortType={sortType} key={i} />
+        ));
 
     return (
-        <div>
-            <label>
-                View
-                <select onChange={handlePlayerSelect} className="max-w-fit">
-                    <optgroup label="Global">
-                        <option value={"all"}>All Players</option>
-                    </optgroup>
-                    <optgroup label="By Position">
-                        <option value={"1 by pos"}>Goalkeepers</option>
-                        <option value={"2 by pos"}>Defenders</option>
-                        <option value={"3 by pos"}>Midfielders</option>
-                        <option value={"4 by pos"}>Forwards</option>
-                    </optgroup>
-                    <optgroup label="By Team">
-                        <option value={1}>Arsenal</option>
-                        <option value={2}>Aston Villa</option>
-                        <option value={3}>Bournemouth</option>
-                        <option value={4}>Brentford</option>
-                        <option value={5}>Brighton</option>
-                        <option value={6}>Burnley</option>
-                        <option value={7}>Chelsea</option>
-                        <option value={8}>Crystal Palace</option>
-                        <option value={9}>Everton</option>
-                        <option value={10}>Fulham</option>
-                        <option value={11}>Liverpool</option>
-                        <option value={12}>Luton</option>
-                        <option value={13}>Man City</option>
-                        <option value={14}>Man Utd</option>
-                        <option value={15}>Newcastle</option>
-                        <option value={16}>Nott&apos;m Forest</option>
-                        <option value={17}>Sheffield Utd</option>
-                        <option value={18}>Spurs</option>
-                        <option value={19}>West Ham</option>
-                        <option value={20}>Wolves</option>
-                    </optgroup>
-                </select>
-            </label>
-            <label>
-                Sorted By
-                <select
-                    onChange={handleSortSelect}
-                    className="max-w-fit"
-                    value={sortType}
-                >
-                    <option value="total_points">Total Points</option>
-                    <option value="points_per_game">Points Per Game</option>
-                    <option value="now_cost">Price</option>
-                    <option value="goals_scored">Goals</option>
-                    <option value="assists">Assists</option>
-                    <option value="bps">Bonus Points System</option>
-                    <option value="influence">Influence</option>
-                    <option value="threat">Threat</option>
-                    <option value="creativity">Creativity</option>
-                    <option value="ict_index">ICT Index</option>
-                    <option value="form">Form</option>
-                    <option value="minutes">Minutes</option>
-                    <option value="starts">Starts</option>
-                    <option value="selected_by_percent">Selected By %</option>
-                    <option value="dreamteam_count">
-                        Dream Team Selections
-                    </option>
-                    <option value="expected_assists">
-                        Expected Assists xA(Total)
-                    </option>
-                    <option value="expected_goals">
-                        Expected Goals xG(Total)
-                    </option>
-                    <option value="yellow_cards">Yellow Cards</option>
-                    <option value="red_cards">Red Cards</option>
-                </select>
-            </label>
-            <ul>{renderedPlayers}</ul>
+        <div className="p-1">
+            <div className="flex max-[750px]:flex-col max-[750px]:mb-6 gap-6 mb-10">
+                <ViewLabel
+                    filterType={filterType}
+                    handleFilterTypeSelect={handleFilterTypeSelect}
+                />
+                <SortLabel
+                    sortType={sortType}
+                    handleSortSelect={handleSortSelect}
+                />
+                <div className="relative grow flex">
+                    <input
+                        className="p-3 grow shadow rounded-md"
+                        type="text"
+                        value={query}
+                        onChange={handleSearch}
+                        placeholder="Search for player"
+                    />
+                    <div className="absolute top-1/2 -translate-y-1/2 right-4 bg-black p-1 rounded-full">
+                        <BiSearchAlt2 fill="white" />
+                    </div>
+                </div>
+            </div>
+            <Table>
+                <PlayerListTableHead sortType={sortType} />
+                <TableBody>{renderedPlayers}</TableBody>
+            </Table>
+            <div className="flex justify-center ">
+                <p className="pt-2 font-semibold text-yellow-700">
+                    {data?.length} players shown
+                </p>
+            </div>
             {pagination}
         </div>
     );
