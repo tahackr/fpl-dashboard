@@ -45,12 +45,12 @@ function PlayerRank({ staticPlayerData }) {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col">
             <CompHeader className="self-start">Player Rank</CompHeader>
-            <div className="max-w-max mt-auto">
+            <div className="w-full h-full flex justify-center items-center bg-white/50 mt-auto rounded-2xl">
                 <Radar
                     data={data}
-                    className="bg-neutral-500 p-0.5 rounded-2xl"
+                    className="max-h-[304px]"
                     options={{
                         plugins: {
                             legend: {
@@ -70,7 +70,7 @@ function PlayerRank({ staticPlayerData }) {
                             r: {
                                 suggestedMin: 0,
                                 suggestedMax: 100,
-                                backgroundColor: "#000",
+                                backgroundColor: "#111",
                                 grid: { color: "#bbb" },
                                 pointLabels: { color: "#fff" },
                                 angleLines: {

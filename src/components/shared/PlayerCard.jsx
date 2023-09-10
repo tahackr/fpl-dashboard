@@ -27,7 +27,7 @@ function PlayerCard({ staticPlayerData }) {
                 }
             />
             <img
-                className="h-20 w-20 absolute top-8 right-8 z-[-1] opacity-50"
+                className="h-20 w-20 absolute top-16 right-16 z-[-1] opacity-50"
                 src={`https://resources.premierleague.com/premierleague/badges/70/t${staticPlayerData.team_code}@x2.png`}
             />
         </div>

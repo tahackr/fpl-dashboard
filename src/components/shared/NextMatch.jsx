@@ -24,7 +24,7 @@ function NextMatch({ match, staticPlayerData }) {
     return (
         <div className="flex flex-col items-center">
             <CompHeader className="self-start">Next Match</CompHeader>
-            <div className="grow w-full flex flex-col items-center justify-center bg-neutral-500 rounded-2xl p-8">
+            <div className="grow w-full flex flex-col items-center justify-center bg-white/50 rounded-2xl p-8">
                 <h3 className="font-extrabold mb-4">{match.event_name}</h3>
                 <a
                     className="flex items-center gap-4 mb-2 duration-300 hover:scale-110 "

@@ -31,7 +31,7 @@ function useGetBackgroundColor(team) {
         case "Everton":
             return "bg-gradient-to-r from-blue-700 to-blue-300 text-white";
         case "Spurs":
-            return "bg-neutral-100 text-black";
+            return "bg-gradient-to-br from-neutral-100 to-blue-950 text-black";
         default:
             return "bg-neutral-700 text-white";
     }
