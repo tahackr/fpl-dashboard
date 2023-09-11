@@ -38,12 +38,20 @@ function PlayerListItem({ player, sortType }) {
             )}
             <TableRow>
                 <TableCell
-                    className="w-1/2 max-[400px]:w-full hover:bg-gray-200 !p-2"
+                    className={`w-1/2 max-[400px]:w-full hover:bg-gray-200 !p-2 ${
+                        window.innerWidth <= 400 ? "!p-0.5" : ""
+                    }`}
                     onClick={() => setIsModalOpen(true)}
                 >
-                    <div className="flex items-center gap-4 cursor-pointer rounded">
+                    <div
+                        className={`flex items-center gap-4 cursor-pointer rounded ${
+                            window.innerWidth <= 400 ? "gap-1" : ""
+                        }`}
+                    >
                         <img
-                            className="w-10 h-10"
+                            className={`w-10 h-10 ${
+                                window.innerWidth <= 400 ? "w-8 h-8" : ""
+                            }`}
                             src={`https://resources.premierleague.com/premierleague/photos/players/40x40/p${player.code}.png`}
                             onError={(e) => {
                                 e.target.src = `https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_${player.team_code}-66.webp`;
@@ -53,7 +61,11 @@ function PlayerListItem({ player, sortType }) {
                             <p className="truncate !font-semibold">
                                 {player.web_name}
                             </p>
-                            <p className="flex gap-2 font-extralight text-xs">
+                            <p
+                                className={`flex gap-2 font-extralight text-xs ${
+                                    window.innerWidth <= 400 ? "gap-1" : ""
+                                }`}
+                            >
                                 <span>{team.short_name}</span>
                                 <span>{position}</span>
                             </p>
