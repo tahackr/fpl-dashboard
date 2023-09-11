@@ -52,7 +52,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                 className="bg-zinc-800/80 fixed inset-0"
             >
                 <div
-                    className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
+                    className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
                 >
                     <PlayerPageSkeleton />
                     <ModalCloseButton
@@ -107,7 +107,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             className="bg-zinc-800/80 fixed inset-0 "
         >
             <div
-                className={`shadow-xl gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 max-[1500px]:overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[700px]:p-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
+                className={`shadow-xl gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[700px]:p-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
             >
                 {staticPlayerData.news && showNews && (
                     <div className="absolute top-8 bg-white/95 text-black w-full text-center flex items-center justify-center gap-4 p-2 font-bold z-40">
