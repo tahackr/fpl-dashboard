@@ -35,6 +35,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const backgroundColor = useGetBackgroundColor(playerTeam.name);
 
     const handleClose = (e) => {
+        e.stopPropagation();
         if (e.target === backgroundRef.current) setIsModalOpen(false);
     };
 
