@@ -12,7 +12,7 @@ import PlayerSeasonStats from "../shared/PlayerSeasonStats";
 import PlayerRank from "../shared/PlayerRank";
 import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetBackgroundColor from "../../hooks/useGetBackgroundColor";
-import PlayerPageSkeleton from "../PlayerPageSkeleton";
+import PlayerPageSkeleton from "../shared/PlayerPageSkeleton";
 import ModalCloseButton from "../shared/ModalCloseButton";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
