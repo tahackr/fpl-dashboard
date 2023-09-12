@@ -35,10 +35,10 @@ function PlayerSeasonStats({ staticPlayerData }) {
     };
 
     return (
-        <div className="col-start-[-1] col-end-[-2] row-start-1 row-end-3 row-span-2 flex flex-col max-[650px]:row-start-auto max-[650px]:row-end-auto">
+        <div className="col-start-[-1] col-end-[-2] row-start-1 row-end-4 flex flex-col max-[650px]:row-start-auto max-[650px]:row-end-auto max-[1500px]:row-end-3">
             <CompHeader>Season Stats</CompHeader>
             <div className="grow grid grid-cols-2 gap-2 !text-black bg-white/50 rounded-2xl p-6">
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <PiSoccerBall className="min-w-[1rem]" />
                         <h3 className="font-semibold">GOALS</h3>
@@ -47,7 +47,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {goals_scored}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <FaHandshake className="min-w-[1rem]" />
                         <h3 className="font-semibold">ASSISTS</h3>
@@ -56,7 +56,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {assists}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <FiClock className="min-w-[1rem]" />
                         <h3 className="font-semibold">MINUTES</h3>
@@ -66,7 +66,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                     </span>
                 </div>
 
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <RiUserStarFill className="min-w-[1rem]" />
                         <h3 className="font-semibold">ICT INDEX</h3>
@@ -75,7 +75,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {ict_index}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <FiStar className="min-w-[1rem]" />
                         <h3 className="font-semibold">DREAM TEAM</h3>
@@ -84,7 +84,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {dreamteam_count}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <GiDarkSquad className="min-w-[1rem]" />
                         <h3 className="font-semibold">FIRST XI</h3>
@@ -93,7 +93,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {starts}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <IoPricetagOutline className="min-w-[1rem]" />
                         <h3 className="font-semibold">COST</h3>
@@ -102,7 +102,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {cost}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <PiHandCoinsLight className="min-w-[1rem]" />
                         <h3 className="font-semibold">BPS</h3>
@@ -111,7 +111,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {bps}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <MdOutlineScore className="min-w-[1rem]" />
                         <h3 className="font-semibold">PPG</h3>
@@ -120,7 +120,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {points_per_game}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <GoGoal className="min-w-[1rem]" />
                         <h3 className="font-semibold">TOTAL POINTS</h3>
@@ -129,7 +129,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {total_points}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <TbCards
                             stroke="black"
@@ -142,7 +142,7 @@ function PlayerSeasonStats({ staticPlayerData }) {
                         {yellow_cards}
                     </span>
                 </div>
-                <div className="rounded p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
+                <div className="rounded p-4 max-[1500px]:p-2 bg-[#faf0e6] flex flex-col gap-2 justify-between border hover:scale-110 duration-300">
                     <div className="flex items-center gap-2">
                         <TbCards
                             stroke="black"

@@ -24,7 +24,7 @@ function PastPerformances({ staticPlayerData, player }) {
     };
 
     return (
-        <div className="overflow-x-hidden relative min-h-[22.6rem] min-w-[19rem] ">
+        <div className="overflow-x-hidden relative min-h-[22.6rem] min-w-[19rem] max-[350px]:min-w-[17rem]">
             <CompHeader>Matches</CompHeader>
             {player.history.toReversed().map((match, i) => (
                 <PastPerformanceItem

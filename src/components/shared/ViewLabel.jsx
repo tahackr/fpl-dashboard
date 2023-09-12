@@ -46,7 +46,7 @@ function ViewLabel({ filterType, handleFilterTypeSelect }) {
                     <option value={20}>Wolves</option>
                 </optgroup>
             </select>
-            <FaSort className="absolute top-1/2 -translate-y-1/2 right-1" />
+            <FaSort className="absolute top-1/2 -translate-y-1/2 right-1 z-[-1]" />
         </label>
     );
 }
