@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PlayerListItem from "./PlayerListItem";
 import usePagination from "../../hooks/usePagination";
 import { itemCount } from "../../utils/paginationItemCount";
@@ -21,6 +21,7 @@ function PlayerList() {
     );
     const [page, setPage] = useState(1);
     const pagination = usePagination(page, data?.length, setPage);
+    const searchInputRef = useRef();
 
     if (isFetching) {
         return <PlayerListSkeleton />;
@@ -65,13 +66,17 @@ function PlayerList() {
                 />
                 <div className="relative grow flex">
                     <input
+                        ref={searchInputRef}
                         className="p-3 grow shadow rounded-md"
                         type="text"
                         value={query}
                         onChange={handleSearch}
                         placeholder="Search for player"
                     />
-                    <div className="absolute top-1/2 -translate-y-1/2 right-4 bg-black p-1 rounded-full">
+                    <div
+                        onClick={() => searchInputRef.current.focus()}
+                        className="absolute top-1/2 -translate-y-1/2 right-4 bg-black p-1 rounded-full"
+                    >
                         <BiSearchAlt2 fill="white" />
                     </div>
                 </div>

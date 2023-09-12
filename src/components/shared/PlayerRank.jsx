@@ -1,5 +1,4 @@
-import "chart.js/auto";
-import { Radar } from "react-chartjs-2";
+import { ResponsiveRadar } from "@nivo/radar";
 import { useContext } from "react";
 import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetPercentile from "../../hooks/useGetPercentile";
@@ -21,24 +20,32 @@ function PlayerRank({ staticPlayerData }) {
         points_per_game_rank,
     } = staticPlayerData;
 
-    const data = {
-        labels: ["ICT", "Form", "Points per game", "Selected", "Cost"],
-        datasets: [
-            {
-                label: "Higher than % ",
-                data: [
-                    100 - useGetPercentile(ict_index_rank, elements.length),
-                    100 - useGetPercentile(form_rank, elements.length),
-                    100 -
-                        useGetPercentile(points_per_game_rank, elements.length),
-                    100 - useGetPercentile(selected_rank, elements.length),
-                    100 - useGetPercentile(now_cost_rank, elements.length),
-                ],
-                borderColor: "red",
-                backgroundColor: "rgba(255,0,0,0.5)",
-            },
-        ],
-    };
+    const data = [
+        {
+            id: "ICT",
+            "Higher than %":
+                100 - useGetPercentile(ict_index_rank, elements.length),
+        },
+        {
+            id: "Form",
+            "Higher than %": 100 - useGetPercentile(form_rank, elements.length),
+        },
+        {
+            id: "PPG",
+            "Higher than %":
+                100 - useGetPercentile(points_per_game_rank, elements.length),
+        },
+        {
+            id: "Selected",
+            "Higher than %":
+                100 - useGetPercentile(selected_rank, elements.length),
+        },
+        {
+            id: "Cost",
+            "Higher than %":
+                100 - useGetPercentile(now_cost_rank, elements.length),
+        },
+    ];
 
     PlayerRank.propTypes = {
         staticPlayerData: PropTypes.object,
@@ -47,42 +54,21 @@ function PlayerRank({ staticPlayerData }) {
     return (
         <div className="flex flex-col">
             <CompHeader className="self-start">Player Rank</CompHeader>
-            <div className="w-full h-full flex justify-center items-center bg-white/50 mt-auto rounded-2xl">
-                <Radar
+            <div className="w-full grow flex justify-center items-center bg-white/50 mt-auto rounded-2xl min-h-[321px]">
+                <ResponsiveRadar
                     data={data}
-                    className="max-h-[304px]"
-                    options={{
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: "#fff",
-                                },
-                                display: true,
-                            },
-                        },
-                        elements: {
-                            point: {
-                                pointRadius: 4,
-                                hoverRadius: 5,
-                            },
-                        },
-                        scales: {
-                            r: {
-                                suggestedMin: 0,
-                                suggestedMax: 100,
-                                backgroundColor: "#111",
-                                grid: { color: "#bbb" },
-                                pointLabels: { color: "#fff" },
-                                angleLines: {
-                                    color: "#bbb",
-                                },
-                                ticks: {
-                                    color: "#000",
-                                    backdropColor: "#eee",
-                                },
-                            },
-                        },
-                    }}
+                    keys={["Higher than %"]}
+                    indexBy="id"
+                    maxValue={100}
+                    valueFormat=">-.2f"
+                    margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
+                    borderColor={{ from: "color" }}
+                    gridLabelOffset={36}
+                    dotSize={10}
+                    dotColor={{ theme: "background" }}
+                    dotBorderWidth={2}
+                    colors={{ scheme: "set1" }}
+                    curve="linearClosed"
                 />
             </div>
         </div>

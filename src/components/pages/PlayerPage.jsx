@@ -2,18 +2,20 @@ import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import useFetchPlayerData from "../../services/fetchPlayerData";
 import { useContext, useRef, useState } from "react";
+import { StaticDataContext } from "../../context/StaticDataProvider";
 import PlayerCard from "../shared/PlayerCard";
-import { AiOutlineClose } from "react-icons/ai";
-import { FcCancel } from "react-icons/fc";
 import PastPerformances from "../shared/PastPerformances";
 import NextMatch from "../shared/NextMatch";
 import PlayerEfficiency from "../shared/PlayerEfficiency";
 import PlayerSeasonStats from "../shared/PlayerSeasonStats";
 import PlayerRank from "../shared/PlayerRank";
-import { StaticDataContext } from "../../context/StaticDataProvider";
 import useGetBackgroundColor from "../../hooks/useGetBackgroundColor";
 import PlayerPageSkeleton from "../shared/PlayerPageSkeleton";
 import ModalCloseButton from "../shared/ModalCloseButton";
+import PlayerForm from "../shared/PlayerForm";
+import PastSeasons from "../shared/PastSeasons";
+import { AiOutlineClose } from "react-icons/ai";
+import { FcCancel } from "react-icons/fc";
 
 function PlayerPage({ staticPlayerData, setIsModalOpen }) {
     const {
@@ -129,6 +131,8 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
                     player={player}
                 />
                 <PlayerRank staticPlayerData={staticPlayerData} />
+                <PastSeasons player={player} />
+                <PlayerForm player={player} />
                 <NextMatch
                     staticPlayerData={staticPlayerData}
                     match={player.fixtures[0]}

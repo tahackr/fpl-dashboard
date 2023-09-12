@@ -36,7 +36,7 @@ function SortLabel({ sortType, handleSortSelect }) {
                 <option value="yellow_cards">Yellow Cards</option>
                 <option value="red_cards">Red Cards</option>
             </select>
-            <FaSort className="absolute top-1/2 -translate-y-1/2 right-1" />
+            <FaSort className="absolute top-1/2 -translate-y-1/2 right-1 z-[-1]" />
         </label>
     );
 }
