@@ -15,33 +15,28 @@ function Statistics() {
     const goalkeepers = players?.filter((player) => player.element_type === 1);
 
     return (
-        <div>
-            <div className="flex flex-wrap gap-2">
-                <div className="flex gap-2">
-                    <div className="flex flex-col">
-                        <CompHeader className="">Forwards</CompHeader>
-                        <StatisticsColumn players={forwards} />
-                    </div>
-
-                    <div className="flex flex-col">
-                        <CompHeader>Midfielders</CompHeader>
-                        <StatisticsColumn players={midfielders} />
-                    </div>
+        <div className="flex justify-center flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-col">
+                    <CompHeader className="">Forwards</CompHeader>
+                    <StatisticsColumn players={forwards} />
                 </div>
-                <div className="flex gap-2">
-                    <div className="flex flex-col">
-                        <CompHeader>Defenders</CompHeader>
-                        <StatisticsColumn players={defenders} />
-                    </div>
-                    <div className="flex flex-col">
-                        <CompHeader>Goalkeepers</CompHeader>
-                        <StatisticsColumn players={goalkeepers} />
-                    </div>
+
+                <div className="flex flex-col">
+                    <CompHeader>Midfielders</CompHeader>
+                    <StatisticsColumn players={midfielders} />
                 </div>
             </div>
-            <div className="flex">
-                <div className="flex flex-col"></div>
-                <div className="flex flex-col"></div>
+
+            <div className="flex justify-center flex-wrap gap-4">
+                <div className="flex flex-col">
+                    <CompHeader>Defenders</CompHeader>
+                    <StatisticsColumn players={defenders} />
+                </div>
+                <div className="flex flex-col">
+                    <CompHeader>Goalkeepers</CompHeader>
+                    <StatisticsColumn players={goalkeepers} />
+                </div>
             </div>
         </div>
     );

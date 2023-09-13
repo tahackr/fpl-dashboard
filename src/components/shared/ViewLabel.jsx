@@ -12,7 +12,7 @@ function ViewLabel({ filterType, handleFilterTypeSelect }) {
             <select
                 value={filterType}
                 onChange={handleFilterTypeSelect}
-                className="grow text-lg font-semibold pt-6 absolute top-0 left-0 w-full bg-transparent appearance-none border-b"
+                className="grow text-lg font-semibold pt-6 absolute top-0 left-0 w-full bg-transparent appearance-none"
             >
                 <optgroup label="Global">
                     <option value={"all"}>All Players</option>
