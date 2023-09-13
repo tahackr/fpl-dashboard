@@ -8,9 +8,11 @@ function PlayerForm({ player }) {
 
     if (history.length < 2)
         return (
-            <div className="flex flex-col">
-                <CompHeader>Player Form</CompHeader>
-                <p className="bg-white/50 rounded-2xl grow p-4 font-bold">
+            <div className="flex flex-col col-start-2 col-end-4 row-start-2 items-end max-[1500px]:col-start-auto max-[1500px]:col-end-auto max-[1500px]:row-start-auto max-[1500px]:items-start">
+                <CompHeader className="mr-[75%] translate-x-full max-[1500px]:mr-0 max-[1500px]:translate-x-0">
+                    Player Form
+                </CompHeader>
+                <p className="bg-white/50 grow p-4 font-bold w-3/4 max-[1500px]:w-full rounded-2xl min-h-[321px]">
                     New Transfer! Insufficient data to create a chart.
                 </p>
             </div>

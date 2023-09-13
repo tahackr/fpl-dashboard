@@ -19,7 +19,7 @@ function PastSeasons({ player }) {
         return (
             <div className="flex flex-col col-start-1 col-end-3 row-start-2 w-[73%] max-[1500px]:w-full max-[1500px]:col-start-auto max-[1500px]:col-end-auto max-[1500px]:row-start-auto">
                 <CompHeader>Past Seasons</CompHeader>
-                <p className="bg-white/50 grow rounded-2xl p-4 font-bold">
+                <p className="min-h-[321px] bg-white/50 grow rounded-2xl p-4 font-bold">
                     Did not play in Premier League.
                 </p>
             </div>

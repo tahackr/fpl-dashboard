@@ -1,14 +1,26 @@
+import { Routes, Route } from "react-router-dom";
 import QueryClientProvider from "./context/QueryClientProvider";
 import StaticDataProvider from "./context/StaticDataProvider";
 import FixturesProvider from "./context/FixturesProvider";
-import HomePage from "./components/pages/HomePage";
+import HomePage from "./routes/HomePage";
+import PlayerListPage from "./routes/PlayerListPage";
+import DreamTeamPage from "./routes/DreamTeamPage";
+import StatisticsPage from "./routes/StatisticsPage";
 
 function App() {
     return (
         <QueryClientProvider>
             <StaticDataProvider>
                 <FixturesProvider>
-                    <HomePage />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/dreamteam" element={<DreamTeamPage />} />
+                        <Route
+                            path="/playerlist"
+                            element={<PlayerListPage />}
+                        />
+                        <Route path="/stats" element={<StatisticsPage />} />
+                    </Routes>
                 </FixturesProvider>
             </StaticDataProvider>
         </QueryClientProvider>

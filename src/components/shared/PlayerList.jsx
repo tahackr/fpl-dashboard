@@ -54,20 +54,22 @@ function PlayerList() {
         ));
 
     return (
-        <div className="p-1">
-            <div className="flex max-[750px]:flex-col max-[750px]:mb-6 gap-6 mb-10">
+        <div>
+            <div className="shadow-md rounded-lg border p-2 flex max-[750px]:flex-col max-[750px]:mb-6 gap-6 mb-10 max-[750px]:gap-3">
                 <ViewLabel
                     filterType={filterType}
                     handleFilterTypeSelect={handleFilterTypeSelect}
                 />
+                <div className="hidden max-[750px]:block w-full border-b"></div>
                 <SortLabel
                     sortType={sortType}
                     handleSortSelect={handleSortSelect}
                 />
+                <div className="hidden max-[750px]:block w-full border-b"></div>
                 <div className="relative grow flex">
                     <input
                         ref={searchInputRef}
-                        className="p-3 grow shadow rounded-md"
+                        className="p-3 grow border rounded-md"
                         type="text"
                         value={query}
                         onChange={handleSearch}

@@ -11,7 +11,7 @@ function SortLabel({ sortType, handleSortSelect }) {
             Sorted By
             <select
                 onChange={handleSortSelect}
-                className="grow text-lg font-semibold pt-6 absolute top-0 left-0 w-full bg-transparent appearance-none border-b"
+                className="grow text-lg font-semibold pt-6 absolute top-0 left-0 w-full bg-transparent appearance-none"
                 value={sortType}
             >
                 <option value="total_points">Total Points</option>

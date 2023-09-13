@@ -73,11 +73,12 @@ function StatisticsColumnItem({ player, i }) {
                 src={`https://resources.premierleague.com/premierleague/badges/70/t${team.code}.png`}
             />
             <div className="flex flex-col">
-                <span className="font-semibold">
+                <span className="truncate w-40 font-semibold">
                     {player.first_name} {player.second_name}
                 </span>
                 <span className="text-xs">{team.name}</span>
             </div>
+            <span className="ml-auto font-semibold">{player.total_points}</span>
         </li>
     );
 }

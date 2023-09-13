@@ -51,7 +51,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             <div
                 ref={backgroundRef}
                 onClick={handleClose}
-                className="bg-zinc-800/80 fixed inset-0"
+                className="bg-zinc-800/80 fixed inset-0 z-50"
             >
                 <div
                     className={`gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
@@ -72,7 +72,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
             <div
                 ref={backgroundRef}
                 onClick={handleClose}
-                className="bg-zinc-800/80 fixed inset-0 "
+                className="bg-zinc-800/80 fixed inset-0 z-50"
             >
                 <div
                     className={`shadow-xl fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg flex flex-col gap-4 items-center ${backgroundColor}`}
@@ -106,7 +106,7 @@ function PlayerPage({ staticPlayerData, setIsModalOpen }) {
         <div
             ref={backgroundRef}
             onClick={handleClose}
-            className="bg-zinc-800/80 fixed inset-0 "
+            className="bg-zinc-800/80 fixed inset-0 z-50"
         >
             <div
                 className={`shadow-xl gap-4 fixed top-20 right-20 left-20 bottom-20 p-8 select-none rounded-lg grid grid-cols-4 place-items-stretch max-[1500px]:grid-cols-3 overflow-y-scroll max-[1200px]:top-0 max-[1200px]:right-0 max-[1200px]:bottom-0 max-[1200px]:left-0 max-[1200px]:rounded-none max-[1050px]:grid-cols-2 max-[700px]:p-2 max-[650px]:grid-cols-1 ${backgroundColor}`}
