@@ -35,29 +35,29 @@ function PastSeasons({ player }) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell className="!pr-0 !text-xs !pb-0.5">
+                            <TableCell className="!pr-0 !text-xs !pb-0.5 w-1/2">
                                 Season
                             </TableCell>
-                            <TableCell className="!px-2 !text-xs !pb-1 !text-center">
+                            <TableCell className="!px-2 !text-xs !pb-1 !text-center w-[12.5%]">
                                 <span className="flex justify-center ">
                                     <PiSoccerBall size={"1rem"} />
                                 </span>
                             </TableCell>
-                            <TableCell className="!px-2 !text-xs !pb-1 !text-center">
+                            <TableCell className="!px-2 !text-xs !pb-1 !text-center w-[12.5%]">
                                 <Tooltip title="Assists">
                                     <span className="flex justify-center underline decoration-dotted">
                                         <FaHandshake size={"1rem"} />
                                     </span>
                                 </Tooltip>
                             </TableCell>
-                            <TableCell className="!px-2 !text-xs !pb-1 !text-center">
+                            <TableCell className="!px-2 !text-xs !pb-1 !text-center w-[12.5%]">
                                 <Tooltip title="Minutes Played">
                                     <span className="flex justify-center underline decoration-dotted">
                                         <FiClock size={"1rem"} />
                                     </span>
                                 </Tooltip>
                             </TableCell>
-                            <TableCell className="!text-xs !pb-1 !text-center">
+                            <TableCell className="!px-2 !text-xs !pb-1 !text-center w-[12.5%]">
                                 <Tooltip title="Total Points">
                                     <span className="flex justify-center underline decoration-dotted ">
                                         <GoGoal size={"1rem"} />

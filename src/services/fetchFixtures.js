@@ -5,7 +5,7 @@ function useFetchFixtures() {
     return useQuery("fixtures", async () => {
         try {
             const data = await axios.get("/api/fixtures/", {
-                cache: "force-cache",
+                cache: "no-store",
                 signal: AbortSignal.timeout(5000),
             });
             return data;

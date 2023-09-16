@@ -54,7 +54,7 @@ function PlayerRank({ staticPlayerData }) {
     return (
         <div className="flex flex-col">
             <CompHeader className="self-start">Player Rank</CompHeader>
-            <div className="w-full grow flex justify-center items-center bg-white/50 mt-auto rounded-2xl min-h-[321px]">
+            <div className="w-full grow flex justify-center items-center bg-white/50 mt-auto rounded-2xl min-h-[321px] text-black">
                 <ResponsiveRadar
                     data={data}
                     keys={["Higher than %"]}

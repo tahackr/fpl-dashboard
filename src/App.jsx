@@ -6,12 +6,14 @@ import HomePage from "./routes/HomePage";
 import PlayerListPage from "./routes/PlayerListPage";
 import DreamTeamPage from "./routes/DreamTeamPage";
 import StatisticsPage from "./routes/StatisticsPage";
+import NavBar from "./components/shared/NavBar";
 
 function App() {
     return (
         <QueryClientProvider>
             <StaticDataProvider>
                 <FixturesProvider>
+                    <NavBar />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/dreamteam" element={<DreamTeamPage />} />
