@@ -5,7 +5,6 @@ function useFetchStaticData() {
     return useQuery("staticData", async () => {
         try {
             const data = await axios.get("/api/bootstrap-static/", {
-                cache: "no-store",
                 signal: AbortSignal.timeout(5000),
             });
             return data;

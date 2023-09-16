@@ -53,14 +53,14 @@ function NavBar() {
             ref={navRef}
             className="sticky top-0 left-0 z-20 bg-[rgb(55_0_60)] text-white min-h-[4rem]"
         >
-            <ul className="ml-28 flex items-center px-6 py-4 font-bold text-xl max-[750px]:hidden">
-                <li className="relative px-3 py-4 group">
+            <ul className="ml-28 flex items-center px-6 font-bold text-xl max-[750px]:hidden">
+                <li className="relative px-3 py-8 group">
                     <div className="flex items-center gap-1">
                         <Link to="/">Home Page</Link>
                         <GoTriangleDown className="mt-1" size={"1rem"} />
                     </div>
-                    <div className="absolute font-semibold left-1/2 top-[3.75rem] duration-200 scale-0 origin-top -translate-x-1/2 w-full bg-[rgb(150_60_255)] text-sm p-4 shadow-lg invisible group-hover:visible group-hover:scale-100 before:absolute before:border-8 before:left-1/2 before:-translate-x-1/2 before:top-[-15px] before:border-transparent before:border-b-[rgb(150_60_255)]">
-                        <ul className="flex flex-col gap-1">
+                    <div className="absolute font-semibold left-1/2 top-[5.75rem] duration-200 scale-0 origin-top -translate-x-1/2 w-44 bg-[rgb(150_60_255)] text-sm p-4 shadow-lg invisible group-hover:visible group-hover:scale-100 before:absolute before:border-8 before:left-1/2 before:-translate-x-1/2 before:top-[-15px] before:border-transparent before:border-b-[rgb(150_60_255)]">
+                        <ul className="flex flex-col gap-1 text-lg">
                             <li className="hover:underline cursor-pointer ">
                                 <Link className="py-1 block" to="/#whatwedo">
                                     What We Do
@@ -79,18 +79,18 @@ function NavBar() {
                         </ul>
                     </div>
                 </li>
-                <li className="px-3 py-4">
+                <li className="px-3 py-8">
                     <Link className="p-2" to="/playerlist">
                         Player List
                     </Link>
                 </li>
 
-                <li className="px-3 py-4 ">
+                <li className="px-3 py-8 ">
                     <Link className="p-2" to="/dreamteam">
                         Dream Team
                     </Link>
                 </li>
-                <li className="px-3 py-4">
+                <li className="px-3 py-8">
                     <Link className="p-2" to="/stats">
                         Leaders
                     </Link>

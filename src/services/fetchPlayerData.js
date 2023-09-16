@@ -5,7 +5,6 @@ function useFetchPlayerData(id) {
     return useQuery("playerData", async () => {
         try {
             const data = await axios.get(`/api/element-summary/${id}/`, {
-                cache: "no-store",
                 signal: AbortSignal.timeout(5000),
             });
             return data;
