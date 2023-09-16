@@ -57,7 +57,7 @@ function StatisticsColumnItem({ player, i }) {
     return (
         <li
             onClick={() => setIsModalOpen(true)}
-            className={`flex items-center gap-4 p-2 pl-3 cursor-pointer ${
+            className={`flex items-center gap-1 p-2 pl-3 cursor-pointer ${
                 i !== 9 ? "border-b" : ""
             }`}
         >
@@ -67,9 +67,9 @@ function StatisticsColumnItem({ player, i }) {
                     setIsModalOpen={setIsModalOpen}
                 />
             )}
-            <span className="font-bold">{i + 1}</span>
+            <span className="font-bold min-w-[20px]">{i + 1}</span>
             <img
-                className="w-6 h-6"
+                className="w-6 h-6 mr-2"
                 src={`https://resources.premierleague.com/premierleague/badges/70/t${team.code}.png`}
             />
             <div className="flex flex-col">

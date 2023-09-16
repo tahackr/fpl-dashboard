@@ -42,7 +42,7 @@ function PlayerForm({ player }) {
             <CompHeader className="mr-[75%] translate-x-full max-[1500px]:mr-0 max-[1500px]:translate-x-0">
                 Player Form
             </CompHeader>
-            <div className="w-3/4 max-[1500px]:w-full grow bg-white/50 rounded-2xl min-h-[321px]">
+            <div className="w-3/4 max-[1500px]:w-full grow bg-white/50 rounded-2xl min-h-[321px] text-black">
                 <ResponsiveLine
                     data={data}
                     margin={{ top: 40, right: 30, bottom: 40, left: 40 }}

@@ -41,7 +41,7 @@ function PlayerEfficiency({ staticPlayerData }) {
     return (
         <div className="flex flex-col items-center col-span-2 max-[1500px]:col-span-1 max-[1050px]:col-span-2 max-[650px]:col-span-1">
             <CompHeader className="self-start">Efficiency</CompHeader>
-            <div className="bg-white/50 rounded-2xl flex justify-center w-full grow min-h-[321px]">
+            <div className="bg-white/50 rounded-2xl flex justify-center w-full grow min-h-[321px] text-black">
                 <ResponsiveBar
                     data={data}
                     keys={["Expected / 90", "Expected", "Score"]}
@@ -111,10 +111,10 @@ function PlayerEfficiency({ staticPlayerData }) {
                     legends={[
                         {
                             dataFrom: "keys",
-                            anchor: "top-right",
+                            anchor: "top-left",
                             direction: "row",
                             justify: false,
-                            translateX: 60,
+                            translateX: -20,
                             translateY: -40,
                             itemsSpacing: 2,
                             itemWidth: 100,

@@ -2,48 +2,46 @@ import { itemCount } from "../utils/paginationItemCount";
 import { BiFirstPage, BiLastPage } from "react-icons/bi";
 
 function usePagination(page, length, setPage) {
+    if (!length) return;
+
     const totalPages = Math.ceil(length / itemCount);
 
-    const currentPage = (
-        <span className="font-black flex items-center justify-center w-8 h-8 rounded-full">
+    const getCurrentPage = (key) => (
+        <span
+            className="font-black flex items-center justify-center w-8 h-8 rounded-full"
+            key={key}
+        >
             {page}
         </span>
     );
 
-    const getNextPage = (value = 1) => (
+    const getNextPage = (value = 1, key) => (
         <span
             onClick={() => setPage((prev) => prev + value)}
             className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
+            key={key}
         >
             {page + value}
         </span>
     );
 
-    const getPrevPage = (value = 1) => (
+    const getPrevPage = (value = 1, key) => (
         <span
             onClick={() => setPage((prev) => prev - value)}
             className="font-medium flex items-center justify-center w-8 h-8 hover:bg-gray-300 rounded-full cursor-pointer"
+            key={key}
         >
             {page - value}
         </span>
     );
 
     const getPageNumbers = () => {
-        if (totalPages === 1) {
-            return currentPage;
-        }
-        if (totalPages === 2) {
-            return page < totalPages ? (
-                <>
-                    {currentPage}
-                    {getNextPage()}
-                </>
-            ) : (
-                <>
-                    {getPrevPage()}
-                    {currentPage}
-                </>
-            );
+        if (totalPages < 5) {
+            return new Array(totalPages).fill(1).map((_, i) => {
+                if (i + 1 === page) return getCurrentPage(i);
+                if (i + 1 < page) return getPrevPage(page - (i + 1), i);
+                if (i + 1 > page) return getNextPage(i + 1 - page, i);
+            });
         }
 
         if (page >= 3 && page <= totalPages - 2) {
@@ -51,18 +49,32 @@ function usePagination(page, length, setPage) {
                 <>
                     {getPrevPage(2)}
                     {getPrevPage()}
-                    {currentPage}
+                    {getCurrentPage()}
                     {getNextPage()}
                     {getNextPage(2)}
                 </>
             );
         }
 
-        if (page === 2 || page === totalPages - 1) {
+        if (page === 2) {
             return (
                 <>
                     {getPrevPage()}
-                    {currentPage}
+                    {getCurrentPage()}
+                    {getNextPage()}
+                    {getNextPage(2)}
+                    {getNextPage(3)}
+                </>
+            );
+        }
+
+        if (page === totalPages - 1) {
+            return (
+                <>
+                    {getPrevPage(3)}
+                    {getPrevPage(2)}
+                    {getPrevPage()}
+                    {getCurrentPage()}
                     {getNextPage()}
                 </>
             );
@@ -71,9 +83,11 @@ function usePagination(page, length, setPage) {
         if (page === 1) {
             return (
                 <>
-                    {currentPage}
+                    {getCurrentPage()}
                     {getNextPage()}
                     {getNextPage(2)}
+                    {getNextPage(3)}
+                    {getNextPage(4)}
                 </>
             );
         }
@@ -81,9 +95,11 @@ function usePagination(page, length, setPage) {
         if (page === totalPages) {
             return (
                 <>
+                    {getPrevPage(4)}
+                    {getPrevPage(3)}
                     {getPrevPage(2)}
                     {getPrevPage()}
-                    {currentPage}
+                    {getCurrentPage()}
                 </>
             );
         }
