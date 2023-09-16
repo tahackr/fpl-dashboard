@@ -86,16 +86,16 @@ function HomePage() {
                         </div>
                         <div className="flex justify-center">
                             <img
-                                className="w-full max-w-[430px] max-h-[254px]"
+                                className="w-full max-w-[430px] max-h-[254px] rounded-lg shadow-xl"
                                 src="https://www.pngitem.com/pimgs/m/54-549170_premier-league-players-png-png-download-premier-league.png"
                             />
                         </div>
                     </div>
                 </section>
 
-                <section className="bg-sky-300 py-24 ">
-                    <div className="container mx-auto relative grid grid-cols-2 gap-32 place-items-center px-14 min-h-[30rem] max-[850px]:grid-cols-1 max-[850px]:gap-10 max-[850px]:justify-items-center max-[400px]:px-2 max-[550px]:px-6">
-                        <div className="ml-48 relative w-48 h-20 my-40 max-[500px]:w-36 max-[500px]:ml-40">
+                <section className="bg-sky-300 py-24">
+                    <div className="container mx-auto relative grid grid-cols-2 gap-32 place-items-center px-14 min-h-[30rem] max-[850px]:grid-cols-1 max-[850px]:gap-10 max-[850px]:justify-items-center max-[550px]:px-6 max-[400px]:px-2">
+                        <div className="ml-48 relative w-48 h-20 my-40 max-[500px]:w-36 max-[500px]:ml-40 before:h-96 before:bg-blue-500 before:opacity-50 before:w-[28rem] before:block before:top-0 before:-translate-y-1/2 before:left-0 before:-translate-x-1/2 before:ml-[-0.6rem] before:mt-[1.2rem] before:rounded-xl max-[500px]:before:w-72 max-[500px]:before:h-64 max-[330px]:ml-32 max-[330px]:w-28 max-[330px]:before:w-64 max-[330px]:before:ml-[-0.4rem] self-end">
                             <img
                                 className="shadow-xl w-60 absolute top-0 left-4 -translate-x-1/4 rounded-xl z-[4]"
                                 src={formchart}
@@ -113,11 +113,11 @@ function HomePage() {
                             <h2 className="font-bold text-3xl ">
                                 Visual Charts
                             </h2>
-                            <p className="font-semibold text-lg mb-6">
+                            <p className="font-semibold text-lg mb-6 w-96">
                                 This is not another database with countless
                                 plain text you&apos;ll just browse through.
                             </p>
-                            <p className="font-semibold text-lg">
+                            <p className="font-semibold text-lg w-96">
                                 We show our data in a compact design which has
                                 all you need, with visual charts and we even
                                 have a customized theme for every club.
@@ -152,7 +152,7 @@ function HomePage() {
                     />
                 </section>
 
-                <section className="relative text-xl bg-[rgb(55_0_65)] rounded-xl text-white overflow-hidden mx-14 mt-12 max-[600px]:mx-1 mt-8 mb-32">
+                <section className="relative text-xl bg-[rgb(55_0_65)] text-white overflow-hidden  mt-12 max-[600px]:mx-1 mt-8 mb-32">
                     <div className="relative z-10 h-full flex justify-center items-center gap-16 px-20 py-8 max-[1000px]:flex max-[1000px]:flex-col max-[700px]:px-8 max-[400px]:px-2 max-[550px]:px-6">
                         <div className="flex flex-col gap-4">
                             <div className="font-bold bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 bg-clip-text text-transparent text-2xl">
@@ -178,7 +178,7 @@ function HomePage() {
                     </div>
                 </section>
                 <section
-                    className="bg-sky-300 py-24"
+                    className="bg-sky-300 py-24 mb-24"
                     id="points"
                     ref={pointsRef}
                 >
