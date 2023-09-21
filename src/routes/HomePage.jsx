@@ -113,11 +113,11 @@ function HomePage() {
                             <h2 className="font-bold text-3xl ">
                                 Visual Charts
                             </h2>
-                            <p className="font-semibold text-lg mb-6 w-96">
+                            <p className="font-semibold text-lg mb-6 max-w-96">
                                 This is not another database with countless
                                 plain text you&apos;ll just browse through.
                             </p>
-                            <p className="font-semibold text-lg w-96">
+                            <p className="font-semibold text-lg max-w-96">
                                 We show our data in a compact design which has
                                 all you need, with visual charts and we even
                                 have a customized theme for every club.
@@ -152,33 +152,8 @@ function HomePage() {
                     />
                 </section>
 
-                <section className="relative text-xl bg-[rgb(55_0_65)] text-white overflow-hidden  mt-12 max-[600px]:mx-1 mt-8 mb-32">
-                    <div className="relative z-10 h-full flex justify-center items-center gap-16 px-20 py-8 max-[1000px]:flex max-[1000px]:flex-col max-[700px]:px-8 max-[400px]:px-2 max-[550px]:px-6">
-                        <div className="flex flex-col gap-4">
-                            <div className="font-bold bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 bg-clip-text text-transparent text-2xl">
-                                Still haven&apos;t started your journey?
-                            </div>
-                            <div className="text-base">
-                                With over 11 million players, Fantasy Premier
-                                League is the biggest Fantasy Football game in
-                                the world. It&apos;s FREE to play and you can
-                                win great prizes!
-                            </div>
-                        </div>
-                        <div>
-                            <a
-                                href="https://users.premierleague.com/users/register/personal?app=plfpl-web&redirect_uri=https://fantasy.premierleague.com/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400  p-5 px-10 rounded-lg text-black font-bold whitespace-nowrap"
-                            >
-                                Start playing!
-                            </a>
-                        </div>
-                    </div>
-                </section>
                 <section
-                    className="bg-sky-300 py-24 mb-24"
+                    className="bg-sky-300 py-24"
                     id="points"
                     ref={pointsRef}
                 >
@@ -227,8 +202,33 @@ function HomePage() {
                         <img className="max-h-[433px]" src={virgil} />
                     </div>
                 </section>
+                <section className="relative text-xl bg-[rgb(55_0_65)] text-white overflow-hidden  mt-12 max-[600px]:mx-1 mt-16 mb-16">
+                    <div className="relative z-10 h-full flex justify-center items-center gap-16 px-20 py-8 max-[1000px]:flex max-[1000px]:flex-col max-[700px]:px-8 max-[400px]:px-2 max-[550px]:px-6">
+                        <div className="flex flex-col gap-4">
+                            <div className="font-bold bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 bg-clip-text text-transparent text-2xl">
+                                Still haven&apos;t started your journey?
+                            </div>
+                            <div className="text-base">
+                                With over 11 million players, Fantasy Premier
+                                League is the biggest Fantasy Football game in
+                                the world. It&apos;s FREE to play and you can
+                                win great prizes!
+                            </div>
+                        </div>
+                        <div>
+                            <a
+                                href="https://users.premierleague.com/users/register/personal?app=plfpl-web&redirect_uri=https://fantasy.premierleague.com/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400  p-5 px-10 rounded-lg text-black font-bold whitespace-nowrap"
+                            >
+                                Start playing!
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 }
