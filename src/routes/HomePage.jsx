@@ -1,10 +1,9 @@
 import PageHeader from "../components/shared/PageHeader";
 import Footer from "../components/shared/Footer";
-import effchart from "../assets/effchart.png";
-import formchart from "../assets/formchart.png";
-import radar from "../assets/radar.png";
+import charts from "../assets/charts.png";
+import pllogo from "../assets/pllogo.png";
+import mainImg from "../assets/mainimg.png";
 import squadMobile from "../assets/squadMobile.png";
-import virgil from "../assets/virgil.png";
 import { BsArrowDown } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
@@ -39,17 +38,17 @@ function HomePage() {
                     id="whatwedo"
                     ref={whatwedoRef}
                 >
-                    <div className="grid grid-cols-2 px-14 items-center container mx-auto gap-28 max-[1050px]:gap-16 max-[1050px]:grid-cols-1 max-[400px]:px-2 max-[550px]:px-6">
+                    <div className="grid grid-cols-[2fr,3fr] px-14 pr-4 items-center container mx-auto gap-28 max-[1050px]:gap-16 max-[1050px]:grid-cols-1 max-[400px]:px-2 max-[550px]:px-6">
                         <div className="max-[1050px]:text-center">
-                            <h2 className="text-3xl font-bold mb-6 mt-2 max-[400px]:text-xl">
+                            <h2 className="text-[3rem] leading-[3.7rem] font-bold mb-4 mt-2 max-[600px]:text-[2.25rem]">
                                 Welcome to Fantasy Premier League Scout!
                             </h2>
-                            <p className="font-medium mb-12">
+                            <p className="font italic mb-10">
                                 We have everything you need to be the best
                                 manager of the best football league in the
                                 world.
                             </p>
-                            <p className="font-semibold text-lg mb-8">
+                            <p className="font-semibold text-lg mb-12">
                                 Search for any player and we will provide you
                                 his statistics.You wonder how was he performing
                                 lately? We got his last matches, his rank
@@ -57,13 +56,13 @@ function HomePage() {
                                 efficiency ratings, his performance throughout
                                 the season and even his stats from past seasons.
                             </p>
-                            <div className="flex gap-4 justify-center max-[319px]:flex-col">
+                            <div className="flex gap-4 max-[319px]:flex-col max-[1050px]:justify-center">
                                 <button>
                                     <a
                                         href="https://users.premierleague.com/users/register/personal?app=plfpl-web&redirect_uri=https://fantasy.premierleague.com/"
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="block bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 p-5 px-10 rounded-lg text-black font-bold whitespace-nowrap hover:from-cyan-400 hover:to-[rgb(0,255,135)] transition-all duration-1000 max-[450px]:px-6"
+                                        className="block bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 p-5 px-10 rounded-lg text-black font-bold whitespace-nowrap hover:from-cyan-400 hover:to-[rgb(0,255,135)] transition-all duration-1000 max-[450px]:px-6 max-[320px]:py-[14px]"
                                     >
                                         Start playing!
                                     </a>
@@ -86,34 +85,21 @@ function HomePage() {
                         </div>
                         <div className="flex justify-center">
                             <img
-                                className="w-full max-w-[430px] max-h-[254px] rounded-lg shadow-xl"
-                                src="https://www.pngitem.com/pimgs/m/54-549170_premier-league-players-png-png-download-premier-league.png"
+                                className="w-full rounded-lg shadow-xl"
+                                src={mainImg}
                             />
                         </div>
                     </div>
                 </section>
 
-                <section className="bg-sky-300 py-24">
+                <section className="relative bg-[rgb(55_0_60)] text-white py-24 after:bg-[url('https://fantasy.premierleague.com/static/media/pattern-2-d.0a64c7c7.png')] after:top-0 after:right-0 after:absolute after:h-60 after:w-60 after:bg-no-repeat after:bg-[left] after:bg-[length:618px_873px] before:bg-[url('https://fantasy.premierleague.com/static/media/pattern-2-d.0a64c7c7.png')] before:bottom-0 before:left-0 before:absolute before:h-72 before:w-72 max-[850px]:before:w-60 max-[400px]:before:w-52 before:bg-no-repeat before:bg-[right] before:bg-[length:618px_873px]">
                     <div className="container mx-auto relative grid grid-cols-2 gap-32 place-items-center px-14 min-h-[30rem] max-[850px]:grid-cols-1 max-[850px]:gap-10 max-[850px]:justify-items-center max-[550px]:px-6 max-[400px]:px-2">
-                        <div className="ml-48 relative w-48 h-20 my-40 max-[500px]:w-36 max-[500px]:ml-40 before:h-96 before:bg-blue-500 before:opacity-50 before:w-[28rem] before:block before:top-0 before:-translate-y-1/2 before:left-0 before:-translate-x-1/2 before:ml-[-0.6rem] before:mt-[1.2rem] before:rounded-xl max-[500px]:before:w-72 max-[500px]:before:h-64 max-[330px]:ml-32 max-[330px]:w-28 max-[330px]:before:w-64 max-[330px]:before:ml-[-0.4rem] self-end">
-                            <img
-                                className="shadow-xl w-60 absolute top-0 left-4 -translate-x-1/4 rounded-xl z-[4]"
-                                src={formchart}
-                            />
-                            <img
-                                className="shadow-xl w-60 absolute top-0 left-0 -translate-y-3/4 -translate-x-1/2 rounded-xl z-[1]"
-                                src={radar}
-                            />
-                            <img
-                                className="absolute top-0 left-0 -translate-y-1/3 -translate-x-full rounded-xl w-60 z-[3] shadow-xl "
-                                src={effchart}
-                            />
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <h2 className="font-bold text-3xl ">
+                        <img className="w-[550px]" src={charts} />
+                        <div className="flex flex-col gap-8">
+                            <h2 className="font-bold text-[3rem] bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 bg-clip-text text-transparent max-[350px]:text-[2.5rem]">
                                 Visual Charts
                             </h2>
-                            <p className="font-semibold text-lg mb-6 max-w-96">
+                            <p className="font-semibold text-lg max-w-96">
                                 This is not another database with countless
                                 plain text you&apos;ll just browse through.
                             </p>
@@ -131,35 +117,36 @@ function HomePage() {
                     id="about"
                     ref={aboutRef}
                 >
-                    <h3 className="text-2xl font-bold">About the game</h3>
+                    <div>
+                        <h3 className="text-[3rem] font-bold mb-8 leading-[3.7rem]">
+                            About the Game
+                        </h3>
 
-                    <p>
-                        Every week you have £100m to pick a squad of 15 players.
-                    </p>
-                    <p>
-                        Players score points for your team based on their
-                        performances for their clubs in Premier League matches.
-                    </p>
-                    <p>
-                        Prices of players are given based on the number of
-                        points they are projected to deliver.So you need to
-                        spend your money wisely.Luckily we are here to help you
-                        with that :)
-                    </p>
+                        <p>
+                            Every week you have £100m to pick a squad of 15
+                            players.Players score points for your team based on
+                            their performances for their clubs in Premier League
+                            matches.Prices of players are given based on the
+                            number of points they are projected to deliver.So
+                            you need to spend your money wisely.Luckily we are
+                            here to help you with that :)
+                        </p>
+                    </div>
+
                     <img
-                        className="max-w-[667px] self-center max-[750px]:w-full max-[750px]:mt-8 shadow-2xl rounded-xl mt-8"
+                        className="max-w-[1000px] self-center max-[1100px]:max-w-[667px] max-[750px]:w-full max-[750px]:mt-8 shadow-2xl rounded-xl mt-8"
                         src={squadMobile}
                     />
                 </section>
 
                 <section
-                    className="bg-sky-300 py-24"
+                    className="bg-[rgb(55_0_60)] text-white py-24 pb-8 mb-[88px]"
                     id="points"
                     ref={pointsRef}
                 >
                     <div className="container mx-auto px-14 max-[400px]:px-2 max-[550px]:px-6 grid grid-cols-2 place-items-center max-[1100px]:grid-cols-1 gap-16">
                         <div className="flex flex-col gap-8 text-lg font-medium">
-                            <h3 className="text-2xl font-bold">
+                            <h3 className="text-[3rem] mb-4 font-bold leading-[3.7rem]">
                                 How are points awarded?
                             </h3>
                             <p>
@@ -199,11 +186,9 @@ function HomePage() {
                                 Gameweek.
                             </p>
                         </div>
-                        <img className="max-h-[433px]" src={virgil} />
+                        <img className="max-h-[433px]" src={pllogo} />
                     </div>
-                </section>
-                <section className="relative text-xl bg-[rgb(55_0_65)] text-white overflow-hidden  mt-12 max-[600px]:mx-1 mt-16 mb-16">
-                    <div className="relative z-10 h-full flex justify-center items-center gap-16 px-20 py-8 max-[1000px]:flex max-[1000px]:flex-col max-[700px]:px-8 max-[400px]:px-2 max-[550px]:px-6">
+                    <div className="container mx-auto relative z-10 h-full grid grid-cols-2 place-items-center gap-16 px-14 py-8  max-[1000px]:grid-cols-1 max-[700px]:px-8 max-[400px]:px-2 max-[550px]:px-6 mt-16">
                         <div className="flex flex-col gap-4">
                             <div className="font-bold bg-gradient-to-r from-[rgb(0,255,135)] to-cyan-400 bg-clip-text text-transparent text-2xl">
                                 Still haven&apos;t started your journey?
@@ -227,6 +212,7 @@ function HomePage() {
                         </div>
                     </div>
                 </section>
+
                 <Footer />
             </div>
         </div>
